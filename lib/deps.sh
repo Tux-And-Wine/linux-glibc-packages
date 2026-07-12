@@ -38,7 +38,7 @@ _resolve_deps_recursive() {
     if [[ -n "$deps" ]]; then
         while IFS= read -r dep; do
             [[ -z "$dep" ]] && continue
-            _resolve_deps_recursive "$dep" resolved_ref visited_ref
+            _resolve_deps_recursive "$dep" "${!resolved_ref}" "${!visited_ref}"
         done <<< "$deps"
     fi
     
